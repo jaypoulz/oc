@@ -1510,6 +1510,11 @@ var schemaYAML = typed.YAMLObject(`types:
     - name: signerName
       type:
         scalar: string
+    - name: userAnnotations
+      type:
+        map:
+          elementType:
+            scalar: string
 - name: io.k8s.api.core.v1.PodDNSConfig
   map:
     fields:
@@ -1805,6 +1810,9 @@ var schemaYAML = typed.YAMLObject(`types:
           elementRelationship: associative
           keys:
           - name
+    - name: workloadRef
+      type:
+        namedType: io.k8s.api.core.v1.WorkloadReference
 - name: io.k8s.api.core.v1.PodTemplateSpec
   map:
     fields:
@@ -2501,6 +2509,20 @@ var schemaYAML = typed.YAMLObject(`types:
       type:
         scalar: boolean
     - name: runAsUserName
+      type:
+        scalar: string
+- name: io.k8s.api.core.v1.WorkloadReference
+  map:
+    fields:
+    - name: name
+      type:
+        scalar: string
+      default: ""
+    - name: podGroup
+      type:
+        scalar: string
+      default: ""
+    - name: podGroupReplicaKey
       type:
         scalar: string
 - name: io.k8s.apimachinery.pkg.api.resource.Quantity
